@@ -14,6 +14,10 @@ We used to perform DL model development, inference, and the case control analysi
 For more information on GaNDLF, please see below or go to https://mlcommons.github.io/GaNDLF/.
 Running this program requires GPU capabilities with cuda 11.8 or cuda 12.2. Given the large size of the DBT images, it is unlikely that model training or inference can occur on CPU-only hardware.
 
+Please cite our work as follows:
+
+Ahluwalia VS, Doiphode N, Mankowski WC, Cohen EA, Pati S, Pantalone L, Bakas S, Brooks A, Vachon CM, Conant EF, Gastounioti A, Kontos, D. Volumetric Breast Density Estimation from 3D Reconstructed DBT Images Using Deep Learning. Accepted at JCO Clin Cancer Inform. 2024.
+
 ### Contents of Repository
     1. output/: Inference output goes here. Model weights used in our model (imagenet_unet_best.pth.tar) also exist in this folder.
     2. config_file.yaml: Configuration file specifying necessary parameters for GaNDLF
