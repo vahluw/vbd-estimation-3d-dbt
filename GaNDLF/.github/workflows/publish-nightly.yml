@@ -1,0 +1,70 @@
+# This workflow will upload a Python Package using Twine when a release is created
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python#publishing-to-package-registries
+
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+
+name: Nightly Prerelease Publishing
+
+on:
+  workflow_dispatch:  # Allow manual triggers
+  schedule:
+    # Runs every day at 3:07am UTC.
+    - cron: '7 3 * * *'
+
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+      with:
+          ref: master
+
+    # This second step is unnecessary but highly recommended because
+    # It will cache database and saves time re-downloading it if database isn't stale.
+    - name: Cache pip
+      uses: actions/cache@v3
+      with:
+        path: ~/.cache/pip
+        key: ${{ runner.os }}-pip-${{ hashFiles('**/setup.py') }}
+        restore-keys: |
+          ${{ runner.os }}-pip-
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: 3.9
+    - name: Check dev version
+      run: | # Get current canonical version, append current date as an identifier
+        currentVer=$(grep -oP '__version__ = \K.*' ./GANDLF/version.py)
+        currentVer=${currentVer//\"}
+        echo "Current version is $currentVer"
+        if [[ $currentVer == *"dev"* ]]; then
+          echo "Nightly will be published"
+          echo "publish_nightly=true" >> $GITHUB_ENV
+          datestampnow=$(date +'%Y%m%d')
+          echo "Install dependencies and set up the environment"
+          pip install scikit-build
+          pip install -e .
+          pip install build
+          echo __version__ = \"$currentVer$datestampnow\" > ./GANDLF/version.py
+          echo "Perform the build"
+          python -m build
+        else
+          echo "Nightly will not be published"
+          echo "publish_nightly=false" >> $GITHUB_ENV
+        fi
+    - name: Publish package    
+      if: env.publish_nightly
+      uses: pypa/gh-action-pypi-publish@v1.9.0
+      continue-on-error: true
+      with:
+        user: __token__
+        password: ${{ secrets.PYPI_API_TOKEN }}

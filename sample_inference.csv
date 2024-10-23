@@ -1,0 +1,4 @@
+SubjectID,Channel_0
+0,sample_data/dbt_rcc.nii.gz
+1,sample_data/dbt_lmlo.nii.gz
+2,sample_data/dbt_lcc.nii.gz
