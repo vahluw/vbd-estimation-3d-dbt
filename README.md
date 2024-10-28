@@ -1,9 +1,9 @@
-# Deep Learning for Volumetric Breast Density Estimation Using 3D DBT Reconstructed Slices
+# TomoLIBRA: Deep Learning for Volumetric Breast Density Estimation Using 3D DBT Reconstructed Slices
 
 
 ## Why use this?
 
-This is the first deep learning model that can estimate volumetric breast density (VBD) and absolute dense volume (ADV) from 3D DBT reconstructed slices. Using the GaNDLF framework, we trained a convolutional neural network (CNN) that can perform dense breast tissue segmentation on 3D DBT reconstructed slices, which are more commonly archived in clinical centers than the “raw” or “for processing” images. We envision that this model can be used to perform large retrospective breast density assessments and eventually perform prospective breast cancer risk assessments.
+TomoLIBRA is the first deep learning model that can estimate volumetric breast density (VBD) and absolute dense volume (ADV) from 3D DBT reconstructed slices. Using the GaNDLF framework, we trained a convolutional neural network (CNN) that can perform dense breast tissue segmentation on 3D DBT reconstructed slices, which are more commonly archived in clinical centers than the “raw” or “for processing” images. We envision that this model can be used to perform large retrospective breast density assessments and eventually perform prospective breast cancer risk assessments.
 
 
 ## Documentation
