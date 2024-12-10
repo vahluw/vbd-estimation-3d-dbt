@@ -16,7 +16,7 @@ Running this program requires GPU capabilities with cuda 11.8 or cuda 12.2. Give
 
 Please cite our work as follows:
 
-Ahluwalia VS, Doiphode N, Mankowski WC, Cohen EA, Pati S, Pantalone L, Bakas S, Brooks A, Vachon CM, Conant EF, Gastounioti A, Kontos, D. Volumetric Breast Density Estimation from 3D Reconstructed DBT Images Using Deep Learning. Accepted at JCO Clin Cancer Inform. 2024.
+Ahluwalia VS, Doiphode N, Mankowski WC, Cohen EA, Pati S, Pantalone L, Bakas S, Brooks A, Vachon CM, Conant EF, Gastounioti A, Kontos, D. Volumetric Breast Density Estimation From Three-Dimensional Reconstructed Digital Breast Tomosynthesis Images Using Deep Learning. JCO Clin Cancer Inform 8, e2400103(2024). DOI:10.1200/CCI.24.00103
 
 ### Contents of Repository
     1. output/: Inference output goes here. Model weights used in our model (imagenet_unet_best.pth.tar) also exist in this folder.
